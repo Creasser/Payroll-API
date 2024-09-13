@@ -54,8 +54,8 @@ class Employee {
         if (!(o instanceof Employee))
             return false;
         Employee employee = (Employee) o;
-        return Object.equals(this.id, employee.id) &&
-                Object.equals(this.name, employee.name) &&
+        return Objects.equals(this.id, employee.id) &&
+                Objects.equals(this.name, employee.name) &&
                 Objects.equals(this.role, employee.role);
     }
 
