@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import org.springframework.hateoas.EntityModel;
-import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
 @RestController
 class EmployeeController {
@@ -38,8 +38,9 @@ class EmployeeController {
     //Single item
 
     @GetMapping("/employees/{id}")
-    Employee one(@PathVariable Long id) {
-        Employee employee = repository.findById(id)
+    EntityModel<Employee> one(@PathVariable Long id) {
+
+        Employee employee = repository.findById(id) //
                 .orElseThrow(() -> new EmployeeNotFoundException(id));
 
         return EntityModel.of(employee, //
